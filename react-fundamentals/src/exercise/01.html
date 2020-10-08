@@ -1,0 +1,27 @@
+<!-- Basic JavaScript-rendered Hello World -->
+<!-- http://localhost:3000/isolated/exercise/01.html -->
+
+<!-- 🐨 Create (in HTML) a <body> with a <div> with the id of "root" -->
+<!-- 🐨 Then create a <script type="module"> for your JavaScript -->
+<html>
+<body>
+<script type="module">
+  const docDiv = document.createElement('div')
+  const rootDiv = document.createElement('div')
+  rootDiv.setAttribute('id', 'root')
+  docDiv.textContent = 'Hello World'
+  rootDiv.append(docDiv)
+  document.body.append(rootDiv)
+</script>
+</body>
+</html>
+<!-- These next instructions are to be written in JavaScript in the <script> tag -->
+<!-- 🐨 Create a div -->
+<!--   💰 document.createElement('div') -->
+
+<!-- 🐨 Set the div's textContent to 'Hello World' and className to 'container' -->
+<!--   💰 div.textContent = '...' -->
+
+<!-- 🐨 Append the div to the root div using `append` -->
+<!--   💰 document.getElementById('root') -->
+<!--   📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append -->
