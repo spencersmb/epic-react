@@ -5,7 +5,7 @@ import React from 'react'
 
 const CountContext = React.createContext()
 
-function CountProvider(props) {
+function CountProvider (props) {
   const [count, setCount] = React.useState(0)
   const value = [count, setCount]
   // could also do it like this:
@@ -13,23 +13,23 @@ function CountProvider(props) {
   return <CountContext.Provider value={value} {...props} />
 }
 
-function CountDisplay() {
+function CountDisplay () {
   const [count] = React.useContext(CountContext)
   return <div>{`The current count is ${count}`}</div>
 }
 
-function Counter() {
+function Counter () {
   const [, setCount] = React.useContext(CountContext)
   const increment = () => setCount(c => c + 1)
   return <button onClick={increment}>Increment count</button>
 }
 
-function App() {
+function App () {
   return (
     <div>
       <CountProvider>
-        <CountDisplay />
-        <Counter />
+        <CountDisplay/>
+        <Counter/>
       </CountProvider>
     </div>
   )

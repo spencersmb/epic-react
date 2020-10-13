@@ -3,15 +3,22 @@
 
 import React from 'react'
 
-function useMedia(query, initialState = false) {
+const formatCountDebugValue = ({initialCount, step}) =>
+  `query: ${initialCount}; state: ${step}`
+
+function useMedia (query, initialState = false) {
   const [state, setState] = React.useState(initialState)
+
   // 🐨 call React.useDebugValue here.
   // 💰 here's the formatted label I use: `\`${query}\` => ${state}`
+  // React.useDebugValue(`\`${query}\` => ${state}`)
+  React.useDebugValue({query, state}, formatCountDebugValue)
 
   React.useEffect(() => {
     let mounted = true
     const mql = window.matchMedia(query)
-    function onChange() {
+
+    function onChange () {
       if (!mounted) {
         return
       }
@@ -30,17 +37,17 @@ function useMedia(query, initialState = false) {
   return state
 }
 
-function Box() {
+function Box () {
   const isBig = useMedia('(min-width: 1000px)')
   const isMedium = useMedia('(max-width: 999px) and (min-width: 700px)')
   const isSmall = useMedia('(max-width: 699px)')
   const color = isBig ? 'green' : isMedium ? 'yellow' : isSmall ? 'red' : null
 
-  return <div style={{width: 200, height: 200, backgroundColor: color}} />
+  return <div style={{width: 200, height: 200, backgroundColor: color}}/>
 }
 
-function App() {
-  return <Box />
+function App () {
+  return <Box/>
 }
 
 export default App
